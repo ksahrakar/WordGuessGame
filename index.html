@@ -11,23 +11,34 @@
 </head>
 <body>
     <h1>Guess Brain Anatomy!</h1>
+    <hr>
     <div id=gamefield>
-        <div class="gameInstructions">
-            <h5>You get 11 guesses to identify the brain part. You don't use up a guess if you find a letter that's in the part. No penalty for guessing a letter you have already guessed. I'll keep track of your wins. You can play up to ten times.</h5>
-            <h5>Game starts when you press your first guess! No Caps!</h5>
-        </div>
-        <div id=statsbox>
-            <h3 id=wins>WINS: </h3>
-            <h3 id=losses>LOSSES: </h3>
-            <h3 id=gameNumber>GAMES PLAYED: </h3>
+        <div id="gameInstructions">
+            <h3>INSTRUCTIONS</h3>
+            <h4>You get ten guesses to identify the brain part. You don't use up a guess if you find a letter that's in the part; but you do use up a guess if you re-enter a letter you have already guessed; so, I will keep track for you. I'll also log the score. You can play up to ten times.</h4>
+            <h4>Game starts when you enter your first guess!</h4>
+            <br>
+            <hr>
+            <h3 id=winsH>WINS: 0</h3>
+            <h3 id=lossesH>LOSSES: 0</h3>
         </div>
         <div id=currentGame>
-            <h3 id=currentWord>BRAIN PART: -_-_-_-_-_-_-</h3>
-            <h3 id=lettersGuessed>LETTERS GUESSED SO FAR: -_-_-_-_-_-_-</h3>
-            <h3 id=guessesLeft>GUESSES LEFT: </h3>
+            <h2 style="text-align:center">BRAIN PART</h2>
+            <h2 id=currentWordH></h2>
+            <hr>
+            <h4>HINT</h4>
+            <img alt="hintImage" src="assets/images/AC.jpg" height="85%" width="85%">
+        </div>
+        <div id=gameStats>
+            <h3>WRONG LETTERS GUESSED: </h3>
+            <h3 id=lettersGuessedH> </h3>
+            <hr>
+            <h3 id=guessesLeftH>GUESSES LEFT: 10</h3>
         </div>
     </div>
-
+    <div id=footer>
+        <h6>&copy; 2018  Kamran Sahrakar</h6>
+    </div>
 
 
 </body>
