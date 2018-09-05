@@ -1,6 +1,6 @@
 // Global variables while playing game
 var wordArray = ["cortex", "ventricle", "cerebellum", "amygdala", "hippocampus", "splenium", "chiasm", "fornix", "commissure", "hypothalamus"]
-var gameNumber = 8;
+var gameNumber = 1;
 var wins = 0;
 var losses = 0;
 var wannaPlay = false;
@@ -21,6 +21,8 @@ if (wannaPlay) {
         splitWordArray[i] = currentWord.charAt(i);
         coverArray[i] = "|_|";
     }
+    // var joinArray = coverArray.join("|_|").toUpperCase();
+    // document.getElementById("currentWordH").innerHTML = joinArray;
 
     // Game starts once any key is pressed
     document.onkeypress = function (el) {
@@ -60,17 +62,18 @@ if (wannaPlay) {
             losses++;
             document.getElementById("lossesH").innerHTML = "LOSSES: "+ losses;
             alert("No more guesses left.\nYou LOSE this game.");
-            document.getElementById("currentWordH").innerHTML = splitWordArray.toUpperCase();
+            document.getElementById("currentWordH").innerHTML = splitWordArray.join(" ").toUpperCase();
         }
     }
     
-    if ((gameNumber > 1 && gameNumber < 11) && wannaplay) {
-        wannaPlay = confirm("Play another game?");
+    if ((gameNumber < 11) && (wannaPlay)){
         gameNumber++;
+        // wannaPlay = confirm("Play another game?");
     } else {
         alert("Thanks for playing");
         // NOT WORKING  end the game
     }
+
 } else {
     alert("Bye!");
     // NOT WORKING  end the game
