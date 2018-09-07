@@ -25,9 +25,9 @@ function playGame() {
 
     //Show hintImage for current game NOT WORKING
     console.log(currentHintPic);
-    document.getElementById("hintImageH").src = currentHintPic;
+    //document.getElementById("hintImageH").src = currentHintPic;
 
-    // Split the mystery word into an array and show blank array so that player knows number of letters and show hint image NOT WORKING
+    // Split the mystery word into an array and show blank array so that player knows number of letters and show hint image WORKING
     for (i = 0; i < currentWord.length; i++) {
         splitWordArray[i] = currentWord.charAt(i);
         coverArray[i] = "|_|";
