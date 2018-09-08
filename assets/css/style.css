@@ -23,3 +23,15 @@ h1{
     text-align: right;
     width: 50%;
 }
+
+#gameStats{
+    background-color: rgb(132, 174, 175);   
+}
+
+#lossesH{
+    background-color: rgb(202, 130, 130);
+}
+
+#winsH{
+    background-color: rgb(129, 192, 129);
+}

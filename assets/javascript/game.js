@@ -7,7 +7,7 @@ var losses = 0;
 var answer = true;
 
 
-function playGame(){
+function playGame() {
     var currentWord = wordArray[(gameNumber - 1)];
     var currentHintPic = hintImage[(gameNumber - 1)];
     var coverArray = [];
@@ -29,15 +29,15 @@ function playGame(){
     document.getElementById("currentWordH").innerHTML = coverArray.join(" ");
 
     // Game starts once any key is pressed
-    
-    document.onkeypress = function(el) {
+
+    document.onkeyup = function (el) {
 
         //Make sure have guesses left
         if (guessesLeft > 0) {
 
             //get key choice
             choice = el.key.toLowerCase();
-            
+
             if (currentWord.includes(choice)) {
 
                 // Compare each array item to guessed letters
@@ -59,20 +59,21 @@ function playGame(){
                     document.getElementById("winsH").innerHTML = "WINS: " + wins;
                     alert("You guessed the part!\nYou win!!");
                     answer = confirm("Play another?");
-                    if (!answer){return;};
-                    gameNumber++;
-                    if (gameNumber<11){
-                        playGame();
-                    } else {return;};
+                    if (answer) {
+                        gameNumber++;
+                        if (gameNumber < 11) {
+                            playGame();
+                        } else {return;}
+                    } else { return; };
                 }
 
             } else {
 
-                //Add letter to list of guessed letters
-                lettersGuessed.push(choice);
-                document.getElementById("lettersGuessedH").innerHTML = lettersGuessed;
-                guessesLeft--;
-                document.getElementById("guessesLeftH").innerHTML = "GUESSES LEFT: " + guessesLeft;
+            //Add letter to list of guessed letters
+            lettersGuessed.push(choice);
+            document.getElementById("lettersGuessedH").innerHTML = lettersGuessed;
+            guessesLeft--;
+            document.getElementById("guessesLeftH").innerHTML = "GUESSES LEFT: " + guessesLeft;
             }
 
         } else {   // Game lost - run out of guesses
@@ -81,21 +82,24 @@ function playGame(){
             document.getElementById("lossesH").innerHTML = "LOSSES: " + losses;
             document.getElementById("currentWordH").innerHTML = splitWordArray.join(" ").toUpperCase();
             answer = confirm("Play another?");
-            if (!answer){return;};
-            gameNumber++;
-            if (gameNumber<11){
-                playGame();
-            } else {return;};
-        }
+            if (answer) {
+                gameNumber++;
+                if (gameNumber < 11) {
+                    playGame();
+                } else { return; }
+            } else { return; };
+        };
     }
 }
 
 
 playGame();
 
-if (gameNumber == 11){
+if (gameNumber == 11) {
     alert("You've finished the game");
-} else if (!answer){
+}
+
+if (!answer) {
     alert("Thanks for playing!");
 }
 
