@@ -4,6 +4,7 @@ var hintImage = ["assets/images/C.jpg", "assets/images/V.jpg", "assets/images/Ce
 var gameNumber = 1;
 var wins = 0;
 var losses = 0;
+var answer = true;
 
 
 function playGame(){
@@ -58,13 +59,11 @@ function playGame(){
                     document.getElementById("winsH").innerHTML = "WINS: " + wins;
                     alert("You guessed the part!\nYou win!!");
                     answer = confirm("Play another?");
-                    if (answer){
-                        gameNumber++;
-                        return;
-                    } else {
-                        gameNumber = 12;
-                        return;
-                    }
+                    if (!answer){return;};
+                    gameNumber++;
+                    if (gameNumber<11){
+                        playGame();
+                    } else {return;};
                 }
 
             } else {
@@ -76,31 +75,29 @@ function playGame(){
                 document.getElementById("guessesLeftH").innerHTML = "GUESSES LEFT: " + guessesLeft;
             }
 
-        } else {   
+        } else {   // Game lost - run out of guesses
             alert("No more guesses left.\nYou LOSE this game.");
             losses++;
             document.getElementById("lossesH").innerHTML = "LOSSES: " + losses;
             document.getElementById("currentWordH").innerHTML = splitWordArray.join(" ").toUpperCase();
             answer = confirm("Play another?");
-            if (answer){
-                gameNumber++;
-                return;
-            } else {
-                gameNumber = 12;
-                return;
-            }
+            if (!answer){return;};
+            gameNumber++;
+            if (gameNumber<11){
+                playGame();
+            } else {return;};
         }
     }
 }
-while ((gameNumber>=1) && (gameNumber<11)){
-    playGame();
-}
+
+
+playGame();
 
 if (gameNumber == 11){
     alert("You've finished the game");
+} else if (!answer){
+    alert("Thanks for playing!");
 }
-if (gameNumber == 12){
-    alert("Thanks for playing");
-};
+
 
 
