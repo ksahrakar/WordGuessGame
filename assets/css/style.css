@@ -9,7 +9,7 @@
 
 #currentWordH{
     text-align: center;
-    font-size: 26px;
+    font-size: 2.25vw;
     background-color: cadetblue;
 }
 
@@ -28,6 +28,10 @@ h1{
     background-color: rgb(132, 174, 175);   
 }
 
+#gameInstructions h4{
+    background-color: rgb(226, 204, 149);
+}
+
 #lossesH{
     background-color: rgb(202, 130, 130);
 }
@@ -35,3 +39,4 @@ h1{
 #winsH{
     background-color: rgb(129, 192, 129);
 }
+

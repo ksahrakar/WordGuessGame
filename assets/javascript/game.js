@@ -8,6 +8,7 @@ var answer = true;
 
 
 function playGame() {
+    // Initialize variables
     var currentWord = wordArray[(gameNumber - 1)];
     var currentHintPic = hintImage[(gameNumber - 1)];
     var coverArray = [];
@@ -56,52 +57,65 @@ function playGame() {
                 var joinedCurrent = splitWordArray.join("");
                 if (joinedCover == joinedCurrent) {
                     wins++;
+                    document.getElementById("currentWordH").innerHTML = currentWord.toUpperCase();
                     document.getElementById("winsH").innerHTML = "WINS: " + wins;
+                    
                     alert("You guessed the part!\nYou win!!");
+                   
+                    // Check if another game desired and available
                     answer = confirm("Play another?");
                     if (answer) {
                         gameNumber++;
                         if (gameNumber < 11) {
                             playGame();
-                        } else {return;}
-                    } else { return; };
+                        } else {
+                            alert("You've finished the game");
+                        return;
+                        }
+                    } else {
+                        alert("Thanks for playing!");
+                        return; 
+                    };
                 }
 
             } else {
 
-            //Add letter to list of guessed letters
-            lettersGuessed.push(choice);
+            //Add letter to list of guessed letters if not already there
+            if (!lettersGuessed.includes(choice)){
+                lettersGuessed.push(choice);
+                guessesLeft--;
+            }
             document.getElementById("lettersGuessedH").innerHTML = lettersGuessed;
-            guessesLeft--;
             document.getElementById("guessesLeftH").innerHTML = "GUESSES LEFT: " + guessesLeft;
             }
 
         } else {   // Game lost - run out of guesses
-            alert("No more guesses left.\nYou LOSE this game.");
+            
             losses++;
+            document.getElementById("currentWordH").innerHTML = currentWord.toUpperCase();
             document.getElementById("lossesH").innerHTML = "LOSSES: " + losses;
-            document.getElementById("currentWordH").innerHTML = splitWordArray.join(" ").toUpperCase();
+            
+            alert("No more guesses left.\nYou LOSE this game.");
+
+            // Check if another game desired and available
             answer = confirm("Play another?");
             if (answer) {
                 gameNumber++;
                 if (gameNumber < 11) {
                     playGame();
-                } else { return; }
-            } else { return; };
+                } else {
+                    alert("You've finished the game");
+                    return; 
+                }
+            } else {
+                alert("Thanks for playing!");
+                return; 
+            };
         };
-    }
+    };
 }
 
 
 playGame();
-
-if (gameNumber == 11) {
-    alert("You've finished the game");
-}
-
-if (!answer) {
-    alert("Thanks for playing!");
-}
-
 
 
