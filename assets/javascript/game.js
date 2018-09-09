@@ -69,10 +69,6 @@ function playGame() {
                     if (answer) {
                         gameNumber++;
                         if (gameNumber < 11) {
-                            coverArray = [];
-                            splitWordArray = [];
-                            guessesLeft = 10;
-                            lettersGuessed = [];
                             playGame();
                         } else {
                             alert("You've finished the game");
@@ -108,10 +104,6 @@ function playGame() {
             if (answer) {
                 gameNumber++;
                 if (gameNumber < 11) {
-                    coverArray = [];
-                    splitWordArray = [];
-                    guessesLeft = 10;
-                    lettersGuessed = [];
                     playGame();
                 } else {
                     alert("You've finished the game");
